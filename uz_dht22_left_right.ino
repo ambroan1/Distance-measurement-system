@@ -34,7 +34,7 @@ int motorState = LOW;  // motorState used to set the MOTOR_PIN
 unsigned long currentMillis = 0;    // current milliseconds
 unsigned long previousMillis = 0;  // will store last time MOTOR_PIN was updated
 
-long interval = 1000000000;  // interval at which to blink (milliseconds)
+long interval = 1000000000;  // interval at which to vibrate the motor (milliseconds)
 
 
 
@@ -87,9 +87,8 @@ void loop() {
           motorState = HIGH;
       }
   
-      // set the MOTOR_PIN with the motorState of the variable:
-      tone(BUZZER_PIN, gradual(buzz_distance_cm));
-      digitalWrite(MOTOR_PIN,motorState);
+      tone(BUZZER_PIN, gradual(buzz_distance_cm)); // set the tone of the buzzer
+      digitalWrite(MOTOR_PIN,motorState);      // set the MOTOR_PIN with the motorState of the variable:
     }
 
   // read humidity and temperature values from dht22 sensor, compute the speed of sound
@@ -113,7 +112,7 @@ void loop() {
   digitalWrite(TRIG_PIN_2, LOW);
   millisDelay(0.002); // Clears the TRIG_PIN_2
   digitalWrite(TRIG_PIN_2, HIGH);
-  millisDelay(0.01); // Sets the TRIG_PIN_1 on HIGH state for 10 micro seconds
+  millisDelay(0.01); // Sets the TRIG_PIN_2 on HIGH state for 10 micro seconds
   digitalWrite(TRIG_PIN_2, LOW);
 
 
